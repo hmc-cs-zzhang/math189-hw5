@@ -103,14 +103,14 @@ def gen_problem_2_graph(theta_opt, hessian_opt, X, Y):
         ('Failed', 'Passed', 'MAP boundary'), loc=1)
 
     # Contour
-    # w1, w2 = np.mgrid[3: 7: .01, 3: 7: .01]
-    # pos = np.empty(w1.shape + (3,))
-    # pos[:, :, 0] = theta_opt.item(0)
-    # pos[:, :, 1] = w1
-    # pos[:, :, 2] = w2
-    # rv = stats.multivariate_normal([theta_opt.item(i) for i in range(theta_opt.shape[0])], np.linalg.inv(hessian_opt.tolist()))
-    # plt.title('Marginal Posterior Fixing w0 = w0*')
-    # plt.contour(w1, w2, rv.pdf(pos))
+    w1, w2 = np.mgrid[3: 7: .01, 3: 7: .01]
+    pos = np.empty(w1.shape + (3,))
+    pos[:, :, 0] = theta_opt.item(0)
+    pos[:, :, 1] = w1
+    pos[:, :, 2] = w2
+    rv = stats.multivariate_normal([theta_opt.item(i) for i in range(theta_opt.shape[0])], np.linalg.inv(hessian_opt.tolist()))
+    plt.title('Marginal Posterior Fixing w0 = w0*')
+    plt.contour(w1, w2, rv.pdf(pos))
 
     plt.show()
 
